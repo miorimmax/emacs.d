@@ -25,6 +25,14 @@
   :after  evil
   :config (global-evil-surround-mode t))
 
+(use-package ivy
+  :ensure t
+  :config (ivy-mode t))
+
+(use-package counsel
+  :after  ivy
+  :ensure t)
+
 (use-package gruvbox-theme
   :ensure t
   :config (load-theme 'gruvbox t))
