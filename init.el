@@ -25,6 +25,11 @@
   :after  evil
   :config (global-evil-surround-mode t))
 
+(use-package evil-leader
+  :ensure t
+  :after  evil
+  :config (global-evil-leader-mode))
+
 (use-package ivy
   :ensure t
   :config (ivy-mode t))
@@ -124,3 +129,11 @@
 
 ;; Remember last position on files
 (save-place-mode t)
+
+;; Leader key
+(evil-leader/set-leader ",")
+
+(evil-leader/set-key
+  "o" 'counsel-fzf
+  "f" 'counsel-ag
+  "r" 'counsel-recentf)
