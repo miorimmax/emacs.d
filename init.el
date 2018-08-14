@@ -32,6 +32,9 @@
 
 (use-package ivy
   :ensure t
+  :init   (setq ivy-use-virtual-buffers t
+                ivy-count-format        "(%d/%d) "
+                ivy-extra-directories   nil)
   :config (ivy-mode t))
 
 (use-package counsel
