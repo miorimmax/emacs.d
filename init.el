@@ -152,7 +152,5 @@
               tab-width 2
               c-basic-offset 2)
 
-(electric-indent-mode 0)
-
 ;; Show trailing whitespace
 (setq show-trailing-whitespace 1)
