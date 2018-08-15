@@ -90,6 +90,10 @@
 
 ;; Show line numbers
 (global-display-line-numbers-mode t)
+(setq-default display-line-numbers-grow-only t
+	      display-line-numbers-widen     t
+	      display-line-numbers-width     2
+	      display-line-numbers-type      'relative)
 
 ;; Highlight current line
 (global-hl-line-mode t)
