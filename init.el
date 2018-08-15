@@ -135,3 +135,6 @@
   "o" 'counsel-fzf
   "f" 'counsel-ag
   "r" 'counsel-recentf)
+
+;; Show matching parens
+(show-paren-mode t)
