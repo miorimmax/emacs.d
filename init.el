@@ -30,8 +30,8 @@
 
 (use-package ivy
   :init   (setq ivy-use-virtual-buffers t
-                ivy-count-format        "(%d/%d) "
-                ivy-extra-directories   nil)
+		ivy-count-format        "(%d/%d) "
+		ivy-extra-directories   nil)
   :config (ivy-mode t))
 
 (use-package counsel
@@ -55,7 +55,7 @@
   :config (projectile-mode t))
 
 (use-package fzf)
-  
+
 (use-package clojure-mode)
 
 (use-package cider
@@ -111,11 +111,11 @@
 
   ;; Set up scroll wheel
   (global-set-key [mouse-4] (lambda ()
-                              (interactive)
-                              (scroll-down 1)))
+			      (interactive)
+			      (scroll-down 1)))
   (global-set-key [mouse-5] (lambda ()
-                              (interactive)
-                              (scroll-up 1)))
+			      (interactive)
+			      (scroll-up 1)))
 
   ;; Enable mouse selection
   (setq mouse-sel-mode t))
@@ -145,3 +145,10 @@
 
 ;; Show doc in minibuffer
 (global-eldoc-mode t)
+
+;; Default indentation
+(setq-default indent-tabs-mode nil
+	      tab-width 2
+	      c-basic-offset 2)
+
+(electric-indent-mode 0)
