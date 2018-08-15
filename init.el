@@ -62,6 +62,9 @@
   :after  ivy
   :init   (setq projectile-completion-system 'ivy)
   :config (projectile-mode t))
+
+(use-package fzf
+  :ensure t)
   
 (use-package clojure-mode
   :ensure t)
@@ -76,7 +79,7 @@
 	    (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
 	    (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
 
-(use-package fzf
+(use-package ensime
   :ensure t)
 
 ;; Hide unnecessary stuff
