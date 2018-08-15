@@ -56,6 +56,12 @@
 (use-package rainbow-delimiters
   :ensure t
   :init   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(use-package projectile
+  :ensure t
+  :after  ivy
+  :init   (setq projectile-completion-system 'ivy)
+  :config (projectile-mode t))
   
 (use-package clojure-mode
   :ensure t)
