@@ -138,3 +138,6 @@
 
 ;; Show matching parens
 (show-paren-mode t)
+
+;; Show doc in minibuffer
+(global-eldoc-mode t)
