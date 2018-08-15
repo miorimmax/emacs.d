@@ -30,8 +30,8 @@
 
 (use-package ivy
   :init   (setq ivy-use-virtual-buffers t
-		ivy-count-format        "(%d/%d) "
-		ivy-extra-directories   nil)
+                ivy-count-format        "(%d/%d) "
+                ivy-extra-directories   nil)
   :config (ivy-mode t))
 
 (use-package counsel
@@ -60,12 +60,13 @@
 
 (use-package cider
   :init   (progn
-	    (setq cider-stacktrace-default-filters    '(tooltip dup)
-		  cider-repl-pop-to-buffer-on-connect nil
-		  cider-repl-use-clojure-font-lock    nil)
-	    (add-hook 'clojure-mode-hook 'cider-mode)
-	    (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-	    (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
+            (setq cider-stacktrace-default-filters    '(tooltip dup)
+                  cider-repl-pop-to-buffer-on-connect nil
+                  cider-repl-use-clojure-font-lock    nil)
+            (add-hook 'clojure-mode-hook 'cider-mode)
+            (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+            (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+            (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
 
 (use-package ensime)
 
@@ -91,9 +92,9 @@
 ;; Show line numbers
 (global-display-line-numbers-mode t)
 (setq-default display-line-numbers-grow-only t
-	      display-line-numbers-widen     t
-	      display-line-numbers-width     2
-	      display-line-numbers-type      'relative)
+              display-line-numbers-widen     t
+              display-line-numbers-width     2
+              display-line-numbers-type      'relative)
 
 ;; Highlight current line
 (global-hl-line-mode t)
@@ -111,11 +112,11 @@
 
   ;; Set up scroll wheel
   (global-set-key [mouse-4] (lambda ()
-			      (interactive)
-			      (scroll-down 1)))
+                              (interactive)
+                              (scroll-down 1)))
   (global-set-key [mouse-5] (lambda ()
-			      (interactive)
-			      (scroll-up 1)))
+                              (interactive)
+                              (scroll-up 1)))
 
   ;; Enable mouse selection
   (setq mouse-sel-mode t))
@@ -148,7 +149,7 @@
 
 ;; Default indentation
 (setq-default indent-tabs-mode nil
-	      tab-width 2
-	      c-basic-offset 2)
+              tab-width 2
+              c-basic-offset 2)
 
 (electric-indent-mode 0)
