@@ -10,67 +10,55 @@
 
 (require 'use-package)
 
+(setq use-package-always-ensure t)
+
 (use-package evil
-  :ensure t
   :init   (setq evil-want-integration nil)
   :config (evil-mode 1))
 
 (use-package evil-collection
-  :ensure t
   :after  evil
   :config (evil-collection-init))
 
 (use-package evil-surround
-  :ensure t
   :after  evil
   :config (global-evil-surround-mode t))
 
 (use-package evil-leader
-  :ensure t
   :after  evil
   :config (global-evil-leader-mode))
 
 (use-package ivy
-  :ensure t
   :init   (setq ivy-use-virtual-buffers t
                 ivy-count-format        "(%d/%d) "
                 ivy-extra-directories   nil)
   :config (ivy-mode t))
 
 (use-package counsel
-  :after  ivy
-  :ensure t)
+  :after  ivy)
 
 (use-package gruvbox-theme
-  :ensure t
   :config (load-theme 'gruvbox t))
 
 (use-package telephone-line
-  :ensure t
   :config (telephone-line-mode t))
 
 (use-package company
-  :ensure t
   :config (global-company-mode t))
 
 (use-package rainbow-delimiters
-  :ensure t
   :init   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package projectile
-  :ensure t
   :after  ivy
   :init   (setq projectile-completion-system 'ivy)
   :config (projectile-mode t))
 
-(use-package fzf
-  :ensure t)
+(use-package fzf)
   
-(use-package clojure-mode
-  :ensure t)
+(use-package clojure-mode)
 
 (use-package cider
-  :ensure t
   :init   (progn
 	    (setq cider-stacktrace-default-filters    '(tooltip dup)
 		  cider-repl-pop-to-buffer-on-connect nil
@@ -79,8 +67,7 @@
 	    (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
 	    (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
 
-(use-package ensime
-  :ensure t)
+(use-package ensime)
 
 ;; Hide unnecessary stuff
 (menu-bar-mode 0)
