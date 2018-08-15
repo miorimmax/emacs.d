@@ -82,9 +82,8 @@
 ;; Disable lock files
 (setq create-lockfiles nil)
 
-;; Create temporary files and backups in tmp
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+;; Disable backup files
+(setq make-backup-files nil)
 
 ;; Use y/n prompts instead of yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
