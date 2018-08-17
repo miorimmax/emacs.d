@@ -135,9 +135,12 @@
 (evil-leader/set-leader ",")
 
 (evil-leader/set-key
-  "o" 'counsel-fzf
-  "f" 'counsel-ag
-  "r" 'counsel-recentf)
+  "mx" 'counsel-M-x
+  "o"  'counsel-fzf
+  "f"  'counsel-ag
+  "r"  'counsel-recentf
+  "b"  'ivy-switch-buffer
+  "B"  'ivy-switch-buffer-other-window)
 
 ;; Show matching parens
 (show-paren-mode t)
