@@ -155,3 +155,7 @@
 
 ;; Show trailing whitespace
 (setq show-trailing-whitespace 1)
+
+(ivy-set-actions
+ 'counsel-fzf
+ '(("O" find-file-other-window "other window")))
