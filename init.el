@@ -54,8 +54,6 @@
   :init   (setq projectile-completion-system 'ivy)
   :config (projectile-mode t))
 
-(use-package fzf)
-
 (use-package clojure-mode)
 
 (use-package cider
