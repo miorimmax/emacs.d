@@ -64,6 +64,7 @@
             (setq cider-stacktrace-default-filters    '(tooltip dup)
                   cider-repl-pop-to-buffer-on-connect nil
                   cider-repl-use-clojure-font-lock    nil
+                  cider-font-lock-dynamically         '(macro core function var)
                   cider-prompt-for-symbol             nil)
             (add-hook 'clojure-mode-hook 'cider-mode)
             (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
