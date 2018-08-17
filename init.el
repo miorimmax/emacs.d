@@ -63,7 +63,8 @@
   :init   (lambda (x)
             (setq cider-stacktrace-default-filters    '(tooltip dup)
                   cider-repl-pop-to-buffer-on-connect nil
-                  cider-repl-use-clojure-font-lock    nil)
+                  cider-repl-use-clojure-font-lock    nil
+                  cider-prompt-for-symbol             nil)
             (add-hook 'clojure-mode-hook 'cider-mode)
             (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
             (add-hook 'cider-repl-mode-hook #'eldoc-mode)
