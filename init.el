@@ -165,3 +165,13 @@
 (ivy-set-actions
  'counsel-fzf
  '(("O" find-file-other-window "other window")))
+
+(evil-define-key 'normal clojure-mode-map
+  "cc"  'cider-connect
+  "cji" 'cider-jack-in)
+
+(evil-define-key 'normal cider-mode-map
+  "clb"  'cider-load-buffer
+  "clf"  'cider-load-file
+  "claf" 'cider-load-all-files
+  "clap" 'cider-load-all-project-ns)
