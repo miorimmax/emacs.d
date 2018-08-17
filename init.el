@@ -37,6 +37,9 @@
 (use-package counsel
   :after  ivy)
 
+(use-package osx-clipboard
+  :config (osx-clipboard-mode t))
+
 (use-package gruvbox-theme
   :config (load-theme 'gruvbox t))
 
