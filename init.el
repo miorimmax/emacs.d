@@ -57,7 +57,7 @@
 (use-package clojure-mode)
 
 (use-package cider
-  :init   (progn
+  :init   (lambda (x)
             (setq cider-stacktrace-default-filters    '(tooltip dup)
                   cider-repl-pop-to-buffer-on-connect nil
                   cider-repl-use-clojure-font-lock    nil)
