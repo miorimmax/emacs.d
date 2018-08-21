@@ -175,3 +175,19 @@
   "clf"  'cider-load-file
   "claf" 'cider-load-all-files
   "clap" 'cider-load-all-project-ns)
+
+(define-clojure-indent
+  (flow 1)
+  (facts 1)
+  (fact 1)
+  (as-customer 1)
+  (as-delegate 2)
+  (as-of 1)
+  (assoc-if 1)
+  (assoc 1)
+  (let-entities 2)
+  (constraint-fn 2)
+  (provided 0)
+  (with-fn-validation 0)
+  (system-map 0)
+  (tabular 0))
