@@ -30,12 +30,12 @@
 
 (use-package ivy
   :init   (setq ivy-use-virtual-buffers t
-                ivy-count-format        "(%d/%d) "
-                ivy-extra-directories   nil)
+                ivy-count-format "(%d/%d) "
+                ivy-extra-directories nil)
   :config (ivy-mode t))
 
 (use-package counsel
-  :after  ivy)
+  :after ivy)
 
 (use-package osx-clipboard
   :config (osx-clipboard-mode t))
@@ -50,7 +50,7 @@
   :config (global-company-mode t))
 
 (use-package rainbow-delimiters
-  :init   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package projectile
   :after  ivy
@@ -59,18 +59,23 @@
 
 (use-package clojure-mode)
 
+(use-package clj-refactor
+  :hook (clojure-mode))
+
 (use-package cider
-  :init   (lambda (x)
-            (setq cider-stacktrace-default-filters    '(tooltip dup)
-                  cider-repl-pop-to-buffer-on-connect nil
-                  cider-repl-use-clojure-font-lock    nil
-                  cider-font-lock-dynamically         '(macro core function var)
-                  cider-prompt-for-symbol             nil)
-            (add-hook 'clojure-mode-hook 'cider-mode)
-            (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-            (add-hook 'cider-repl-mode-hook #'eldoc-mode)
-            (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
-            (add-hook 'cider-mode-hook #'eldoc-mode)))
+  :init
+  (setq cider-prompt-for-symbol nil
+        cider-save-file-on-load t
+        cider-font-lock-dynamically '(macro core function var)
+        cider-eldoc-display-context-dependent-info t
+        cider-repl-pop-to-buffer-on-connect nil
+        cider-overlays-use-font-lock t
+        cider-pprint-fn "puget")
+  (add-hook 'cider-mode-hook #'eldoc-mode)
+  (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-repl-mode-hook #'subword-mode))
 
 (use-package ensime)
 
@@ -96,9 +101,9 @@
 ;; Show line numbers
 (global-display-line-numbers-mode t)
 (setq-default display-line-numbers-grow-only t
-              display-line-numbers-widen     t
-              display-line-numbers-width     2
-              display-line-numbers-type      'relative)
+              display-line-numbers-widen t
+              display-line-numbers-width 2
+              display-line-numbers-type 'relative)
 
 ;; Highlight current line
 (global-hl-line-mode t)
@@ -146,13 +151,11 @@
   "f"  'counsel-ag
   "r"  'counsel-recentf
   "b"  'ivy-switch-buffer
-  "B"  'ivy-switch-buffer-other-window)
+  "B"  'ivy-switch-buffer-other-window
+  "s"  'cider-scratch)
 
 ;; Show matching parens
 (show-paren-mode t)
-
-;; Show doc in minibuffer
-(global-eldoc-mode t)
 
 ;; Default indentation
 (setq-default indent-tabs-mode nil
@@ -166,17 +169,61 @@
  'counsel-fzf
  '(("O" find-file-other-window "other window")))
 
-(evil-define-key 'normal clojure-mode-map
-  "cc"  'cider-connect
-  "cji" 'cider-jack-in)
+(evil-define-key '(normal visual) clojure-mode-map
+  "cc"   'cider-connect
+  "cji"  'cider-jack-in
+  "crcl" 'clojure-convert-collection-to-list
+  "crcm" 'clojure-convert-collection-to-map
+  "crcq" 'clojure-convert-collection-to-quoted-list
+  "crcs" 'clojure-convert-collection-to-set
+  "crcv" 'clojure-convert-collection-to-vector
+  "crcp" 'clojure-cycle-privacy
+  "crci" 'clojure-cycle-if
+  "cril" 'clojure-introduce-let
+  "crml" 'clojure-move-to-let
+  "crtf" 'clojure-thread-first-all
+  "crth" 'clojure-thread
+  "crtl" 'clojure-thread-last-all
+  "crua" 'clojure-unwind-all
+  "cruw" 'clojure-unwind
+  "crad" 'cljr-add-declaration
+  "crai" 'cljr-add-import-to-ns
+  "crar" 'cljr-add-require-to-ns
+  "crau" 'cljr-add-use-to-ns
+  "crdk" 'cljr-destructure-keys
+  "crec" 'cljr-extract-constant
+  "cred" 'cljr-extract-def
+  "crel" 'cljr-expand-let
+  "crfe" 'cljr-create-fn-from-example
+  "crmf" 'cljr-move-form
+  "crpc" 'cljr-project-clean
+  "crpf" 'cljr-promote-function
+  "crsc" 'cljr-show-changelog
+  "crsp" 'cljr-sort-project-dependencies
+  "crsr" 'cljr-stop-referring
+  "crup" 'cljr-update-project-dependencies)
 
-(evil-define-key 'normal cider-mode-map
+(evil-define-key '(normal visual) cider-mode-map
   "clb"  'cider-load-buffer
   "clf"  'cider-load-file
   "claf" 'cider-load-all-files
-  "clap" 'cider-load-all-project-ns)
+  "clap" 'cider-load-all-project-ns
+  "cram" 'cljr-add-missing-libspec
+  "crap" 'cljr-add-project-dependency
+  "cras" 'cljr-add-stubs
+  "crcn" 'cljr-clean-ns
+  "cref" 'cljr-extract-function
+  "crfu" 'cljr-find-usages
+  "crhd" 'cljr-hotload-dependency
+  "cris" 'cljr-inline-symbol
+  "crrf" 'cljr-rename-file-or-dir
+  "crrl" 'cljr-remove-let
+  "crrs" 'cljr-rename-symbol)
 
 (define-clojure-indent
+  (future-flow 1)
+  (future-facts 1)
+  (future-fact 1)
   (flow 1)
   (facts 1)
   (fact 1)
