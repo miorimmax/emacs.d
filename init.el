@@ -34,6 +34,9 @@
                 ivy-extra-directories nil)
   :config (ivy-mode t))
 
+(use-package ivy-hydra
+  :after ivy)
+
 (use-package counsel
   :after ivy)
 
