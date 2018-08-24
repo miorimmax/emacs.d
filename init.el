@@ -66,7 +66,7 @@
 (use-package clojure-mode)
 
 (use-package clj-refactor
-  :hook (clojure-mode))
+  :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
 (use-package cider
   :init
