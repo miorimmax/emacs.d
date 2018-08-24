@@ -50,7 +50,10 @@
   :config (telephone-line-mode t))
 
 (use-package company
-  :config (global-company-mode t))
+  :hook ((after-init . global-company-mode)
+         (prog-mode . (lambda ()
+                        (set (make-local-variable 'company-backends)
+                             '((company-dabbrev-code company-yasnippet)))))))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
