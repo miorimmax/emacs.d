@@ -63,6 +63,9 @@
   :init   (setq projectile-completion-system 'ivy)
   :config (projectile-mode t))
 
+(use-package flycheck
+  :config (global-flycheck-mode t))
+
 (use-package clojure-mode
   :init
   (add-hook 'clojure-mode-hook #'subword-mode)
