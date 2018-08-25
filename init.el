@@ -64,7 +64,7 @@
   :config (projectile-mode t))
 
 (use-package flycheck
-  :config (global-flycheck-mode t))
+  :hook (after-init . global-flycheck-mode))
 
 (use-package clojure-mode
   :init
