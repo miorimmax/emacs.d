@@ -120,6 +120,10 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
+;; Graphical tweaks
+(when (window-system)
+  (set-frame-font "Fira Code"))
+
 ;; Disable bell
 (setq ring-bell-function 'ignore)
 
