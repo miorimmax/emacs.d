@@ -63,7 +63,27 @@
   :init   (setq projectile-completion-system 'ivy)
   :config (projectile-mode t))
 
-(use-package clojure-mode)
+(use-package clojure-mode
+  :init
+  (add-hook 'clojure-mode-hook #'subword-mode)
+  (define-clojure-indent
+    (future-flow 1)
+    (future-facts 1)
+    (future-fact 1)
+    (flow 1)
+    (facts 1)
+    (fact 1)
+    (as-customer 1)
+    (as-delegate 2)
+    (as-of 1)
+    (assoc-if 1)
+    (assoc 1)
+    (let-entities 2)
+    (constraint-fn 2)
+    (provided 0)
+    (with-fn-validation 0)
+    (system-map 0)
+    (tabular 0)))
 
 (use-package clj-refactor
   :hook ((clojure-mode cider-mode) . clj-refactor-mode))
@@ -229,22 +249,3 @@
   "crrf" 'cljr-rename-file-or-dir
   "crrl" 'cljr-remove-let
   "crrs" 'cljr-rename-symbol)
-
-(define-clojure-indent
-  (future-flow 1)
-  (future-facts 1)
-  (future-fact 1)
-  (flow 1)
-  (facts 1)
-  (fact 1)
-  (as-customer 1)
-  (as-delegate 2)
-  (as-of 1)
-  (assoc-if 1)
-  (assoc 1)
-  (let-entities 2)
-  (constraint-fn 2)
-  (provided 0)
-  (with-fn-validation 0)
-  (system-map 0)
-  (tabular 0))
