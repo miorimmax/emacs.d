@@ -85,6 +85,10 @@
 
 (use-package ensime)
 
+(use-package dart-mode
+  :init
+  (setq dart-enable-analysis-server t))
+
 ;; Hide unnecessary stuff
 (menu-bar-mode 0)
 (tool-bar-mode 0)
