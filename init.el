@@ -111,7 +111,8 @@
 
 (use-package dart-mode
   :init
-  (setq dart-enable-analysis-server t))
+  (setq dart-sdk-path "/usr/local/opt/dart/libexec/"
+        dart-enable-analysis-server t))
 
 ;; Hide unnecessary stuff
 (menu-bar-mode 0)
