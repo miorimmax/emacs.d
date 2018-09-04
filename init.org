@@ -206,7 +206,7 @@
    #+BEGIN_SRC emacs-lisp
     (use-package dart-mode
       :init
-      (setq dart-sdk-path "/usr/local/opt/dart/libexec/"
+      (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
             dart-enable-analysis-server t))
    #+END_SRC
 
