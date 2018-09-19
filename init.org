@@ -107,6 +107,21 @@
     (use-package flycheck
       :hook (after-init . global-flycheck-mode))
   #+END_SRC
+
+* Git
+  #+BEGIN_SRC emacs-lisp
+    (use-package magit)
+
+    (use-package gitconfig-mode)
+
+    (use-package gitattributes-mode)
+
+    (use-package gitignore-mode)
+
+    (use-package evil-magit
+      :after evil)
+  #+END_SRC
+
 * Languages
 
 ** Clojure
