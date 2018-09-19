@@ -356,7 +356,7 @@
 
   - Show trailing whitespace
   #+BEGIN_SRC emacs-lisp
-    (setq show-trailing-whitespace t)
+    (setq-default show-trailing-whitespace t)
   #+END_SRC
 
   - Ivy action to open file in other window
