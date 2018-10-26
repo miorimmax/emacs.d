@@ -236,6 +236,13 @@
             dart-enable-analysis-server t))
    #+END_SRC
 
+** YAML
+   #+BEGIN_SRC emacs-lisp
+    (use-package yaml-mode
+      :mode (("\\.yml\\'" . yaml-mode)
+             ("\\.yaml\\'" . yaml-mode)))
+   #+END_SRC
+
 * Misc
   - Hide unnecessary stuff
   #+BEGIN_SRC emacs-lisp
