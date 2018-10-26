@@ -243,6 +243,12 @@
              ("\\.yaml\\'" . yaml-mode)))
    #+END_SRC
 
+** JSON
+   #+BEGIN_SRC emacs-lisp
+    (use-package json-mode
+      :mode (("\\.json\\.base\\'" . json-mode)))
+   #+END_SRC
+
 * Misc
   - Hide unnecessary stuff
   #+BEGIN_SRC emacs-lisp
