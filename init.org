@@ -150,7 +150,8 @@
                                        (provided 0)
                                        (with-fn-validation 0)
                                        (system-map 0)
-                                       (tabular 0)))))
+                                       (tabular 0)
+                                       (request-context 0)))))
 
     (use-package clj-refactor
       :hook ((clojure-mode cider-mode) . clj-refactor-mode))
