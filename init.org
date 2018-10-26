@@ -52,7 +52,9 @@
     (use-package ivy
       :init   (setq ivy-use-virtual-buffers t
                     ivy-count-format "(%d/%d) "
-                    ivy-extra-directories nil)
+                    ivy-extra-directories nil
+                    ivy-initial-inputs-alist nil
+                    ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
       :config (ivy-mode t))
 
     (use-package ivy-hydra
