@@ -169,7 +169,8 @@
       (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
       (add-hook 'cider-repl-mode-hook #'eldoc-mode)
       (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-      (add-hook 'cider-repl-mode-hook #'subword-mode))
+      (add-hook 'cider-repl-mode-hook #'subword-mode)
+      (add-hook 'cider-repl-mode-hook #'visual-line-mode))
 
     (evil-define-key '(normal visual) clojure-mode-map
       "cc"   'cider-connect
