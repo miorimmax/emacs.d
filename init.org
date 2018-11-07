@@ -154,6 +154,7 @@
                                        (request-context 0)))))
 
     (use-package clj-refactor
+      :init (setq cljr-warn-on-eval nil)
       :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
     (use-package cider
