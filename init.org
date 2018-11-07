@@ -223,6 +223,13 @@
       "crrf" 'cljr-rename-file-or-dir
       "crrl" 'cljr-remove-let
       "crrs" 'cljr-rename-symbol)
+
+    (evil-leader/set-key-for-mode 'clojure-mode
+      "rc" 'hydra-cljr-code-menu/body
+      "rh" 'hydra-cljr-help-menu/body
+      "rn" 'hydra-cljr-ns-menu/body
+      "rp" 'hydra-cljr-project-menu/body
+      "rt" 'hydra-cljr-toplevel-menu/body)
    #+END_SRC
 
 ** Scala
@@ -364,7 +371,6 @@
       "mx" 'counsel-M-x
       "o"  'counsel-fzf
       "f"  'counsel-ag
-      "r"  'counsel-recentf
       "b"  'ivy-switch-buffer
       "B"  'ivy-switch-buffer-other-window
       "s"  'cider-scratch)
