@@ -268,6 +268,12 @@
       :init (setq markdown-command "multimarkdown"))
    #+END_SRC
 
+** Ruby
+   #+BEGIN_SRC emacs-lisp
+    (use-package enh-ruby-mode
+      :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
+   #+END_SRC
+
 * Misc
   - Hide unnecessary stuff
   #+BEGIN_SRC emacs-lisp
