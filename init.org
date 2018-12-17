@@ -157,6 +157,8 @@
       :init (setq cljr-warn-on-eval nil)
       :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
+    (use-package emidje)
+
     (use-package cider
       :init
       (setq cider-prompt-for-symbol nil
@@ -166,12 +168,15 @@
             cider-repl-pop-to-buffer-on-connect nil
             cider-overlays-use-font-lock t
             cider-pprint-fn "puget")
+      (emidje-setup)
       (add-hook 'cider-mode-hook #'eldoc-mode)
       (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+      (add-hook 'cider-mode-hook #'emidje-mode)
       (add-hook 'cider-repl-mode-hook #'eldoc-mode)
       (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
       (add-hook 'cider-repl-mode-hook #'subword-mode)
       (add-hook 'cider-repl-mode-hook #'visual-line-mode))
+
 
     (evil-define-key '(normal visual) clojure-mode-map
       "cc"   'cider-connect
@@ -222,7 +227,12 @@
       "cris" 'cljr-inline-symbol
       "crrf" 'cljr-rename-file-or-dir
       "crrl" 'cljr-remove-let
-      "crrs" 'cljr-rename-symbol)
+      "crrs" 'cljr-rename-symbol
+      "cmtn" 'emidje-run-ns-tests
+      "cmtp" 'emidje-run-all-tests
+      "cmtr" 'emidje-re-run-non-passing-tests
+      "cmtt" 'emidje-run-test-at-point
+      "cmts" 'emidje-show-test-report)
 
     (evil-leader/set-key-for-mode 'clojure-mode
       "rc" 'hydra-cljr-code-menu/body
