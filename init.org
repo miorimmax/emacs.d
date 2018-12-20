@@ -68,6 +68,9 @@
   #+BEGIN_SRC emacs-lisp
     (use-package osx-clipboard
       :config (osx-clipboard-mode t))
+
+    (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+    (add-to-list 'default-frame-alist '(ns-appearance . dark))
   #+END_SRC
 
 * Themes
