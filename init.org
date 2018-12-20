@@ -125,163 +125,169 @@
       :after evil)
   #+END_SRC
 
+* Org mode
+  #+BEGIN_SRC emacs-lisp
+    (setq org-src-tab-acts-natively t)
+  #+END_SRC
+
 * Languages
 
 ** Clojure
    #+BEGIN_SRC emacs-lisp
-    (use-package clojure-mode
-      :init
-      (add-hook 'clojure-mode-hook #'subword-mode)
-      (add-hook 'clojure-mode-hook (lambda ()
-                                     (define-clojure-indent
-                                       (future-flow 1)
-                                       (future-facts 1)
-                                       (future-fact 1)
-                                       (flow 1)
-                                       (facts 1)
-                                       (fact 1)
-                                       (as-customer 1)
-                                       (as-delegate 2)
-                                       (as-of 1)
-                                       (assoc-if 1)
-                                       (assoc 1)
-                                       (let-entities 2)
-                                       (constraint-fn 2)
-                                       (provided 0)
-                                       (with-fn-validation 0)
-                                       (system-map 0)
-                                       (tabular 0)
-                                       (request-context 0)))))
+     (use-package clojure-mode
+       :init
+       (add-hook 'clojure-mode-hook #'subword-mode)
+       (add-hook 'clojure-mode-hook (lambda ()
+                                      (define-clojure-indent
+                                        (future-flow 1)
+                                        (future-facts 1)
+                                        (future-fact 1)
+                                        (flow 1)
+                                        (facts 1)
+                                        (fact 1)
+                                        (as-customer 1)
+                                        (as-delegate 2)
+                                        (as-of 1)
+                                        (assoc-if 1)
+                                        (assoc 1)
+                                        (let-entities 2)
+                                        (constraint-fn 2)
+                                        (provided 0)
+                                        (with-fn-validation 0)
+                                        (system-map 0)
+                                        (tabular 0)
+                                        (request-context 0)))))
 
-    (use-package clj-refactor
-      :init (setq cljr-warn-on-eval nil)
-      :hook ((clojure-mode cider-mode) . clj-refactor-mode))
+     (use-package clj-refactor
+       :init (setq cljr-warn-on-eval nil)
+       :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
-    (use-package emidje)
+     (use-package emidje)
 
-    (use-package cider
-      :init
-      (setq cider-prompt-for-symbol nil
-            cider-save-file-on-load t
-            cider-font-lock-dynamically '(macro core function var)
-            cider-eldoc-display-context-dependent-info t
-            cider-repl-pop-to-buffer-on-connect nil
-            cider-overlays-use-font-lock t
-            cider-pprint-fn "puget")
-      (emidje-setup)
-      (add-hook 'cider-mode-hook #'eldoc-mode)
-      (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
-      (add-hook 'cider-mode-hook #'emidje-mode)
-      (add-hook 'cider-repl-mode-hook #'eldoc-mode)
-      (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-      (add-hook 'cider-repl-mode-hook #'subword-mode)
-      (add-hook 'cider-repl-mode-hook #'visual-line-mode))
+     (use-package cider
+       :init
+       (setq cider-prompt-for-symbol nil
+             cider-save-file-on-load t
+             cider-font-lock-dynamically '(macro core function var)
+             cider-eldoc-display-context-dependent-info t
+             cider-repl-pop-to-buffer-on-connect nil
+             cider-overlays-use-font-lock t
+             cider-pprint-fn "puget")
+       (emidje-setup)
+       (add-hook 'cider-mode-hook #'eldoc-mode)
+       (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+       (add-hook 'cider-mode-hook #'emidje-mode)
+       (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+       (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+       (add-hook 'cider-repl-mode-hook #'subword-mode)
+       (add-hook 'cider-repl-mode-hook #'visual-line-mode))
 
 
-    (evil-define-key '(normal visual) clojure-mode-map
-      "cc"   'cider-connect
-      "cji"  'cider-jack-in
-      "crcl" 'clojure-convert-collection-to-list
-      "crcm" 'clojure-convert-collection-to-map
-      "crcq" 'clojure-convert-collection-to-quoted-list
-      "crcs" 'clojure-convert-collection-to-set
-      "crcv" 'clojure-convert-collection-to-vector
-      "crcp" 'clojure-cycle-privacy
-      "crci" 'clojure-cycle-if
-      "cril" 'clojure-introduce-let
-      "crml" 'clojure-move-to-let
-      "crtf" 'clojure-thread-first-all
-      "crth" 'clojure-thread
-      "crtl" 'clojure-thread-last-all
-      "crua" 'clojure-unwind-all
-      "cruw" 'clojure-unwind
-      "crad" 'cljr-add-declaration
-      "crai" 'cljr-add-import-to-ns
-      "crar" 'cljr-add-require-to-ns
-      "crau" 'cljr-add-use-to-ns
-      "crdk" 'cljr-destructure-keys
-      "crec" 'cljr-extract-constant
-      "cred" 'cljr-extract-def
-      "crel" 'cljr-expand-let
-      "crfe" 'cljr-create-fn-from-example
-      "crmf" 'cljr-move-form
-      "crpc" 'cljr-project-clean
-      "crpf" 'cljr-promote-function
-      "crsc" 'cljr-show-changelog
-      "crsp" 'cljr-sort-project-dependencies
-      "crsr" 'cljr-stop-referring
-      "crup" 'cljr-update-project-dependencies)
+     (evil-define-key '(normal visual) clojure-mode-map
+       "cc"   'cider-connect
+       "cji"  'cider-jack-in
+       "crcl" 'clojure-convert-collection-to-list
+       "crcm" 'clojure-convert-collection-to-map
+       "crcq" 'clojure-convert-collection-to-quoted-list
+       "crcs" 'clojure-convert-collection-to-set
+       "crcv" 'clojure-convert-collection-to-vector
+       "crcp" 'clojure-cycle-privacy
+       "crci" 'clojure-cycle-if
+       "cril" 'clojure-introduce-let
+       "crml" 'clojure-move-to-let
+       "crtf" 'clojure-thread-first-all
+       "crth" 'clojure-thread
+       "crtl" 'clojure-thread-last-all
+       "crua" 'clojure-unwind-all
+       "cruw" 'clojure-unwind
+       "crad" 'cljr-add-declaration
+       "crai" 'cljr-add-import-to-ns
+       "crar" 'cljr-add-require-to-ns
+       "crau" 'cljr-add-use-to-ns
+       "crdk" 'cljr-destructure-keys
+       "crec" 'cljr-extract-constant
+       "cred" 'cljr-extract-def
+       "crel" 'cljr-expand-let
+       "crfe" 'cljr-create-fn-from-example
+       "crmf" 'cljr-move-form
+       "crpc" 'cljr-project-clean
+       "crpf" 'cljr-promote-function
+       "crsc" 'cljr-show-changelog
+       "crsp" 'cljr-sort-project-dependencies
+       "crsr" 'cljr-stop-referring
+       "crup" 'cljr-update-project-dependencies)
 
-    (evil-define-key '(normal visual) cider-mode-map
-      "clb"  'cider-load-buffer
-      "clf"  'cider-load-file
-      "claf" 'cider-load-all-files
-      "clap" 'cider-load-all-project-ns
-      "cram" 'cljr-add-missing-libspec
-      "crap" 'cljr-add-project-dependency
-      "cras" 'cljr-add-stubs
-      "crcn" 'cljr-clean-ns
-      "cref" 'cljr-extract-function
-      "crfu" 'cljr-find-usages
-      "crhd" 'cljr-hotload-dependency
-      "cris" 'cljr-inline-symbol
-      "crrf" 'cljr-rename-file-or-dir
-      "crrl" 'cljr-remove-let
-      "crrs" 'cljr-rename-symbol
-      "cmtn" 'emidje-run-ns-tests
-      "cmtp" 'emidje-run-all-tests
-      "cmtr" 'emidje-re-run-non-passing-tests
-      "cmtt" 'emidje-run-test-at-point
-      "cmts" 'emidje-show-test-report)
+     (evil-define-key '(normal visual) cider-mode-map
+       "clb"  'cider-load-buffer
+       "clf"  'cider-load-file
+       "claf" 'cider-load-all-files
+       "clap" 'cider-load-all-project-ns
+       "cram" 'cljr-add-missing-libspec
+       "crap" 'cljr-add-project-dependency
+       "cras" 'cljr-add-stubs
+       "crcn" 'cljr-clean-ns
+       "cref" 'cljr-extract-function
+       "crfu" 'cljr-find-usages
+       "crhd" 'cljr-hotload-dependency
+       "cris" 'cljr-inline-symbol
+       "crrf" 'cljr-rename-file-or-dir
+       "crrl" 'cljr-remove-let
+       "crrs" 'cljr-rename-symbol
+       "cmtn" 'emidje-run-ns-tests
+       "cmtp" 'emidje-run-all-tests
+       "cmtr" 'emidje-re-run-non-passing-tests
+       "cmtt" 'emidje-run-test-at-point
+       "cmts" 'emidje-show-test-report)
 
-    (evil-leader/set-key-for-mode 'clojure-mode
-      "rc" 'hydra-cljr-code-menu/body
-      "rh" 'hydra-cljr-help-menu/body
-      "rn" 'hydra-cljr-ns-menu/body
-      "rp" 'hydra-cljr-project-menu/body
-      "rt" 'hydra-cljr-toplevel-menu/body)
+     (evil-leader/set-key-for-mode 'clojure-mode
+       "rc" 'hydra-cljr-code-menu/body
+       "rh" 'hydra-cljr-help-menu/body
+       "rn" 'hydra-cljr-ns-menu/body
+       "rp" 'hydra-cljr-project-menu/body
+       "rt" 'hydra-cljr-toplevel-menu/body)
    #+END_SRC
 
 ** Scala
    #+BEGIN_SRC emacs-lisp
-    (use-package ensime)
+     (use-package ensime)
    #+END_SRC
 
 ** Dart
    #+BEGIN_SRC emacs-lisp
-    (use-package dart-mode
-      :init
-      (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
-            dart-enable-analysis-server t))
+     (use-package dart-mode
+       :init
+       (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
+             dart-enable-analysis-server t))
    #+END_SRC
 
 ** YAML
    #+BEGIN_SRC emacs-lisp
-    (use-package yaml-mode
-      :mode (("\\.yml\\'" . yaml-mode)
-             ("\\.yaml\\'" . yaml-mode)))
+     (use-package yaml-mode
+       :mode (("\\.yml\\'" . yaml-mode)
+              ("\\.yaml\\'" . yaml-mode)))
    #+END_SRC
 
 ** JSON
    #+BEGIN_SRC emacs-lisp
-    (use-package json-mode
-      :mode (("\\.json\\.base\\'" . json-mode)))
+     (use-package json-mode
+       :mode (("\\.json\\.base\\'" . json-mode)))
    #+END_SRC
 
 ** Markdown
    #+BEGIN_SRC emacs-lisp
-    (use-package markdown-mode
-      :mode (("README\\.md\\'" . gfm-mode)
-             ("CHANGELOG\\.md\\'" . gfm-mode)
-             ("ROADMAP\\.md\\'" . gfm-mode)
-             ("\\.md\\'" . markdown-mode))
-      :init (setq markdown-command "multimarkdown"))
+     (use-package markdown-mode
+       :mode (("README\\.md\\'" . gfm-mode)
+              ("CHANGELOG\\.md\\'" . gfm-mode)
+              ("ROADMAP\\.md\\'" . gfm-mode)
+              ("\\.md\\'" . markdown-mode))
+       :init (setq markdown-command "multimarkdown"))
    #+END_SRC
 
 ** Ruby
    #+BEGIN_SRC emacs-lisp
-    (use-package enh-ruby-mode
-      :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
+     (use-package enh-ruby-mode
+       :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
+   #+END_SRC
    #+END_SRC
 
 * Misc
