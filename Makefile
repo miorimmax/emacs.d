@@ -1,6 +1,10 @@
 #!/usr/bin/make -f
 
+VERSION := $(shell brew info emacs-plus --json=v1 | \
+	jq -r '.[] | select(.name == "emacs-plus") | .installed | first | .version' | \
+	sed 's/\(\d+\.\d+\).*/\1/g')
+
 tangle:
 	emacs --batch \
-		--load /usr/local/share/emacs/26.1/lisp/org/ob-tangle.elc \
+		--load /usr/local/share/emacs/${VERSION}/lisp/org/ob-tangle.elc \
 		--eval '(org-babel-tangle-file "~/.emacs.d/init.org")'
