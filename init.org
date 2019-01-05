@@ -248,6 +248,11 @@
        "clf"  'cider-load-file
        "claf" 'cider-load-all-files
        "clap" 'cider-load-all-project-ns
+       "cmtn" 'emidje-run-ns-tests
+       "cmtp" 'emidje-run-all-tests
+       "cmtr" 'emidje-re-run-non-passing-tests
+       "cmts" 'emidje-show-test-report
+       "cmtt" 'emidje-run-test-at-point
        "cram" 'cljr-add-missing-libspec
        "crap" 'cljr-add-project-dependency
        "cras" 'cljr-add-stubs
@@ -258,12 +263,7 @@
        "cris" 'cljr-inline-symbol
        "crrf" 'cljr-rename-file-or-dir
        "crrl" 'cljr-remove-let
-       "crrs" 'cljr-rename-symbol
-       "cmtn" 'emidje-run-ns-tests
-       "cmtp" 'emidje-run-all-tests
-       "cmtr" 'emidje-re-run-non-passing-tests
-       "cmtt" 'emidje-run-test-at-point
-       "cmts" 'emidje-show-test-report)
+       "crrs" 'cljr-rename-symbol)
 
      (evil-leader/set-key-for-mode 'clojure-mode
        "rc" 'hydra-cljr-code-menu/body
