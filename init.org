@@ -239,6 +239,11 @@
        "crup" 'cljr-update-project-dependencies)
 
      (evil-define-key '(normal visual) cider-mode-map
+       "cel"  'cider-eval-last-sexp
+       "cen"  'cider-eval-ns-form
+       "cer"  'cider-eval-region
+       "cep"  'cider-eval-sexp-at-point
+       "cet"  'cider-eval-defun-at-point
        "clb"  'cider-load-buffer
        "clf"  'cider-load-file
        "claf" 'cider-load-all-files
