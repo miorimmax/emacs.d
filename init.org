@@ -275,7 +275,11 @@
 
 ** Scala
    #+BEGIN_SRC emacs-lisp
-     (use-package ensime)
+     (use-package ensime
+       :init
+       (setq ensime-search-interface 'ivy)
+       (add-hook 'scala-mode-hook 'ensime-mode)
+       (add-hook 'scala-mode-hook 'subword-mode))
    #+END_SRC
 
 ** Dart
