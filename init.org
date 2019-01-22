@@ -45,6 +45,10 @@
     (use-package evil-leader
       :after  evil
       :config (global-evil-leader-mode))
+
+    (use-package evil-search-highlight-persist
+      :after evil
+      :config (global-evil-search-highlight-persist t))
   #+END_SRC
 
 * Ivy
