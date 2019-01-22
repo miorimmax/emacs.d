@@ -192,7 +192,6 @@
        :init (setq cljr-warn-on-eval nil)
        :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
-     (use-package emidje)
 
      (use-package cider
        :init
@@ -203,10 +202,8 @@
              cider-repl-pop-to-buffer-on-connect nil
              cider-overlays-use-font-lock t
              cider-pprint-fn "puget")
-       (emidje-setup)
        (add-hook 'cider-mode-hook #'eldoc-mode)
        (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
-       (add-hook 'cider-mode-hook #'emidje-mode)
        (add-hook 'cider-repl-mode-hook #'eldoc-mode)
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'subword-mode)
@@ -268,11 +265,6 @@
        " lf"  'cider-load-file
        " la"  'cider-load-all-files
        " lp"  'cider-load-all-project-ns
-       " tn"  'emidje-run-ns-tests
-       " tp"  'emidje-run-all-tests
-       " tr"  'emidje-re-run-non-passing-tests
-       " ts"  'emidje-show-test-report
-       " tt"  'emidje-run-test-at-point
        " ram" 'cljr-add-missing-libspec
        " rap" 'cljr-add-project-dependency
        " ras" 'cljr-add-stubs
