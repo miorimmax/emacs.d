@@ -206,11 +206,22 @@
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'subword-mode)
        (add-hook 'cider-repl-mode-hook #'visual-line-mode))
+   #+END_SRC
 
+   Custom key bindings, mostly for clojure but mnemonics prefixes should be usable for all languages, for example:
 
+   | Prefix | Meaning        |
+   | c      | Code (general) |
+   | ce     | Evaluation     |
+   | cl     | Loading        |
+   | cp     | Project        |
+   | cr     | Refactoring    |
+   | ct     | Testing        |
+
+   #+BEGIN_SRC emacs-lisp
      (evil-define-key '(normal visual) clojure-mode-map
-       "cc"   'cider-connect
-       "cji"  'cider-jack-in
+       "cpc"  'cider-connect ;; "connect"
+       "cps"  'cider-jack-in ;; "start"
        "crcl" 'clojure-convert-collection-to-list
        "crcm" 'clojure-convert-collection-to-map
        "crcq" 'clojure-convert-collection-to-quoted-list
@@ -250,13 +261,13 @@
        "cet"  'cider-eval-defun-at-point
        "clb"  'cider-load-buffer
        "clf"  'cider-load-file
-       "claf" 'cider-load-all-files
-       "clap" 'cider-load-all-project-ns
-       "cmtn" 'emidje-run-ns-tests
-       "cmtp" 'emidje-run-all-tests
-       "cmtr" 'emidje-re-run-non-passing-tests
-       "cmts" 'emidje-show-test-report
-       "cmtt" 'emidje-run-test-at-point
+       "cla"  'cider-load-all-files
+       "clp"  'cider-load-all-project-ns
+       "ctn"  'emidje-run-ns-tests
+       "ctp"  'emidje-run-all-tests
+       "ctr"  'emidje-re-run-non-passing-tests
+       "cts"  'emidje-show-test-report
+       "ctt"  'emidje-run-test-at-point
        "cram" 'cljr-add-missing-libspec
        "crap" 'cljr-add-project-dependency
        "cras" 'cljr-add-stubs
@@ -270,11 +281,11 @@
        "crrs" 'cljr-rename-symbol)
 
      (evil-leader/set-key-for-mode 'clojure-mode
-       "rc" 'hydra-cljr-code-menu/body
-       "rh" 'hydra-cljr-help-menu/body
-       "rn" 'hydra-cljr-ns-menu/body
-       "rp" 'hydra-cljr-project-menu/body
-       "rt" 'hydra-cljr-toplevel-menu/body)
+       "crc" 'hydra-cljr-code-menu/body
+       "crh" 'hydra-cljr-help-menu/body
+       "crn" 'hydra-cljr-ns-menu/body
+       "crp" 'hydra-cljr-project-menu/body
+       "crt" 'hydra-cljr-toplevel-menu/body)
    #+END_SRC
 
 ** Scala
@@ -322,7 +333,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package enh-ruby-mode
        :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
-   #+END_SRC
    #+END_SRC
 
 * Misc
