@@ -210,82 +210,86 @@
 
    Custom key bindings, mostly for clojure but mnemonics prefixes should be usable for all languages, for example:
 
-   | Prefix | Meaning        |
-   | c      | Code (general) |
-   | ce     | Evaluation     |
-   | cl     | Loading        |
-   | cp     | Project        |
-   | cr     | Refactoring    |
-   | ct     | Testing        |
+   | Prefix | Meaning  |
+   |--------+----------|
+   | SPC e  | Evaluate |
+   | SPC l  | Load     |
+   | SPC p  | Project  |
+   | SPC r  | Refactor |
+   | SPC t  | Test     |
 
    #+BEGIN_SRC emacs-lisp
      (evil-define-key '(normal visual) clojure-mode-map
-       "cpc"  'cider-connect ;; "connect"
-       "cps"  'cider-jack-in ;; "start"
-       "crcl" 'clojure-convert-collection-to-list
-       "crcm" 'clojure-convert-collection-to-map
-       "crcq" 'clojure-convert-collection-to-quoted-list
-       "crcs" 'clojure-convert-collection-to-set
-       "crcv" 'clojure-convert-collection-to-vector
-       "crcp" 'clojure-cycle-privacy
-       "crci" 'clojure-cycle-if
-       "cril" 'clojure-introduce-let
-       "crml" 'clojure-move-to-let
-       "crtf" 'clojure-thread-first-all
-       "crth" 'clojure-thread
-       "crtl" 'clojure-thread-last-all
-       "crua" 'clojure-unwind-all
-       "cruw" 'clojure-unwind
-       "crad" 'cljr-add-declaration
-       "crai" 'cljr-add-import-to-ns
-       "crar" 'cljr-add-require-to-ns
-       "crau" 'cljr-add-use-to-ns
-       "crdk" 'cljr-destructure-keys
-       "crec" 'cljr-extract-constant
-       "cred" 'cljr-extract-def
-       "crel" 'cljr-expand-let
-       "crfe" 'cljr-create-fn-from-example
-       "crmf" 'cljr-move-form
-       "crpc" 'cljr-project-clean
-       "crpf" 'cljr-promote-function
-       "crsc" 'cljr-show-changelog
-       "crsp" 'cljr-sort-project-dependencies
-       "crsr" 'cljr-stop-referring
-       "crup" 'cljr-update-project-dependencies)
+       " pc"  'cider-connect ;; "connect"
+       " ps"  'cider-jack-in ;; "start"
+       " rcl" 'clojure-convert-collection-to-list
+       " rcm" 'clojure-convert-collection-to-map
+       " rcq" 'clojure-convert-collection-to-quoted-list
+       " rcs" 'clojure-convert-collection-to-set
+       " rcv" 'clojure-convert-collection-to-vector
+       " rcp" 'clojure-cycle-privacy
+       " rci" 'clojure-cycle-if
+       " ril" 'clojure-introduce-let
+       " rml" 'clojure-move-to-let
+       " rtf" 'clojure-thread-first-all
+       " rth" 'clojure-thread
+       " rtl" 'clojure-thread-last-all
+       " rua" 'clojure-unwind-all
+       " ruw" 'clojure-unwind
+       " rad" 'cljr-add-declaration
+       " rai" 'cljr-add-import-to-ns
+       " rar" 'cljr-add-require-to-ns
+       " rau" 'cljr-add-use-to-ns
+       " rdk" 'cljr-destructure-keys
+       " rec" 'cljr-extract-constant
+       " red" 'cljr-extract-def
+       " rel" 'cljr-expand-let
+       " rfe" 'cljr-create-fn-from-example
+       " rmf" 'cljr-move-form
+       " rpc" 'cljr-project-clean
+       " rpf" 'cljr-promote-function
+       " rsc" 'cljr-show-changelog
+       " rsp" 'cljr-sort-project-dependencies
+       " rsr" 'cljr-stop-referring
+       " rup" 'cljr-update-project-dependencies)
 
      (evil-define-key '(normal visual) cider-mode-map
-       "cel"  'cider-eval-last-sexp
-       "cen"  'cider-eval-ns-form
-       "cer"  'cider-eval-region
-       "cep"  'cider-eval-sexp-at-point
-       "cet"  'cider-eval-defun-at-point
-       "clb"  'cider-load-buffer
-       "clf"  'cider-load-file
-       "cla"  'cider-load-all-files
-       "clp"  'cider-load-all-project-ns
-       "ctn"  'emidje-run-ns-tests
-       "ctp"  'emidje-run-all-tests
-       "ctr"  'emidje-re-run-non-passing-tests
-       "cts"  'emidje-show-test-report
-       "ctt"  'emidje-run-test-at-point
-       "cram" 'cljr-add-missing-libspec
-       "crap" 'cljr-add-project-dependency
-       "cras" 'cljr-add-stubs
-       "crcn" 'cljr-clean-ns
-       "cref" 'cljr-extract-function
-       "crfu" 'cljr-find-usages
-       "crhd" 'cljr-hotload-dependency
-       "cris" 'cljr-inline-symbol
-       "crrf" 'cljr-rename-file-or-dir
-       "crrl" 'cljr-remove-let
-       "crrs" 'cljr-rename-symbol)
+       " el"  'cider-eval-last-sexp
+       " en"  'cider-eval-ns-form
+       " er"  'cider-eval-region
+       " ep"  'cider-eval-sexp-at-point
+       " et"  'cider-eval-defun-at-point
+       " lb"  'cider-load-buffer
+       " lf"  'cider-load-file
+       " la"  'cider-load-all-files
+       " lp"  'cider-load-all-project-ns
+       " tn"  'emidje-run-ns-tests
+       " tp"  'emidje-run-all-tests
+       " tr"  'emidje-re-run-non-passing-tests
+       " ts"  'emidje-show-test-report
+       " tt"  'emidje-run-test-at-point
+       " ram" 'cljr-add-missing-libspec
+       " rap" 'cljr-add-project-dependency
+       " ras" 'cljr-add-stubs
+       " rcn" 'cljr-clean-ns
+       " ref" 'cljr-extract-function
+       " rfu" 'cljr-find-usages
+       " rhd" 'cljr-hotload-dependency
+       " ris" 'cljr-inline-symbol
+       " rrf" 'cljr-rename-file-or-dir
+       " rrl" 'cljr-remove-let
+       " rrs" 'cljr-rename-symbol)
+   #+END_SRC
 
+   Hydra menus follow the same rules as the code rules mentioned before, but with a h prefix:
+
+   #+BEGIN_SRC emacs-lisp
      (evil-leader/set-key-for-mode 'clojure-mode
-       "crc" 'hydra-cljr-code-menu/body
-       "crh" 'hydra-cljr-help-menu/body
-       "crn" 'hydra-cljr-ns-menu/body
-       "crp" 'hydra-cljr-project-menu/body
-       "crt" 'hydra-cljr-toplevel-menu/body)
+       "hrc" 'hydra-cljr-code-menu/body
+       "hrh" 'hydra-cljr-help-menu/body
+       "hrn" 'hydra-cljr-ns-menu/body
+       "hrp" 'hydra-cljr-project-menu/body
+       "hrt" 'hydra-cljr-toplevel-menu/body)
    #+END_SRC
 
 ** Scala
