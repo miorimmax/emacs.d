@@ -119,6 +119,13 @@
       :hook (after-init . global-flycheck-mode))
   #+END_SRC
 
+* Spell checking
+  #+BEGIN_SRC emacs-lisp
+    (use-package flyspell
+      :hook ((after-init . flyspell-mode)
+             (prog-mode . flyspell-prog-mode)))
+  #+END_SRC
+
 * Git
   #+BEGIN_SRC emacs-lisp
     (use-package magit)
@@ -143,11 +150,11 @@
   #+BEGIN_SRC emacs-lisp
     (use-package smartparens
       :config (show-smartparens-global-mode t)
-      :hook   ((prog-mode . turn-on-smartparens-strict-mode)))
+      :hook   (prog-mode . turn-on-smartparens-strict-mode))
 
     (use-package evil-smartparens
       :after smartparens
-      :hook  ((smartparens-enabled-hook . evil-smartparens-mode)))
+      :hook  (smartparens-enabled-hook . evil-smartparens-mode))
 
     (evil-define-key '(normal visual) smartparens-mode-map
       "ts" 'sp-transpose-sexp
