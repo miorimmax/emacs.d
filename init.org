@@ -206,8 +206,7 @@
              cider-font-lock-dynamically '(macro core function var)
              cider-eldoc-display-context-dependent-info t
              cider-repl-pop-to-buffer-on-connect nil
-             cider-overlays-use-font-lock t
-             cider-pprint-fn "puget")
+             cider-overlays-use-font-lock t)
        (add-hook 'cider-mode-hook #'eldoc-mode)
        (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'eldoc-mode)
