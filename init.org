@@ -153,7 +153,7 @@
 
     (use-package evil-smartparens
       :after smartparens
-      :hook  (smartparens-enabled-hook . evil-smartparens-mode))
+      :hook  (smartparens-mode . evil-smartparens-mode))
 
     (evil-define-key '(normal visual) smartparens-mode-map
       "ts" 'sp-transpose-sexp
