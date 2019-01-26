@@ -7,6 +7,7 @@
   #+BEGIN_SRC emacs-lisp
     (require 'package)
 
+    (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
     (package-initialize)
@@ -23,6 +24,7 @@
 * exec-path-from-shell
   #+BEGIN_SRC emacs-lisp
     (use-package exec-path-from-shell
+      :pin    melpa-stable
       :config (when (memq window-system '(mac ns))
                 (exec-path-from-shell-initialize)))
   #+END_SRC
@@ -30,30 +32,36 @@
 * EVIL
   #+BEGIN_SRC emacs-lisp
     (use-package evil
+      :pin    melpa-stable
       :init   (setq evil-want-integration t
                     evil-want-keybinding  nil)
       :config (evil-mode 1))
 
     (use-package evil-collection
+      :pin    melpa-stable
       :after  evil
       :config (evil-collection-init))
 
     (use-package evil-surround
+      :pin    melpa-stable
       :after  evil
       :config (global-evil-surround-mode t))
 
     (use-package evil-leader
+      :pin    melpa-stable
       :after  evil
       :config (global-evil-leader-mode))
 
     (use-package evil-search-highlight-persist
-      :after evil
+      :pin    melpa
+      :after  evil
       :config (global-evil-search-highlight-persist t))
   #+END_SRC
 
 * Ivy
   #+BEGIN_SRC emacs-lisp
     (use-package ivy
+      :pin    melpa-stable
       :init   (setq ivy-use-virtual-buffers t
                     ivy-count-format "(%d/%d) "
                     ivy-extra-directories nil
@@ -61,15 +69,18 @@
       :config (ivy-mode t))
 
     (use-package ivy-hydra
+      :pin   melpa-stable
       :after ivy)
 
     (use-package counsel
+      :pin   melpa-stable
       :after ivy)
   #+END_SRC
 
 * OSX
   #+BEGIN_SRC emacs-lisp
     (use-package osx-clipboard
+      :pin    melpa-stable
       :config (osx-clipboard-mode t))
 
     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -80,18 +91,21 @@
 * Themes
   #+BEGIN_SRC emacs-lisp
     (use-package gruvbox-theme
+      :pin    melpa-stable
       :config (load-theme 'gruvbox t))
   #+END_SRC
 
 * Status line
   #+BEGIN_SRC emacs-lisp
     (use-package telephone-line
+      :pin    melpa-stable
       :config (telephone-line-mode t))
   #+END_SRC
 
 * Code completion
   #+BEGIN_SRC emacs-lisp
     (use-package company
+      :pin  melpa-stable
       :hook ((after-init . global-company-mode)
              (prog-mode . (lambda ()
                             (set (make-local-variable 'company-backends)
@@ -101,13 +115,14 @@
 * Rainbow parens
   #+BEGIN_SRC emacs-lisp
     (use-package rainbow-delimiters
+      :pin  melpa-stable
       :hook (prog-mode . rainbow-delimiters-mode))
   #+END_SRC
 
 * Project management
   #+BEGIN_SRC emacs-lisp
     (use-package projectile
-      :after  ivy
+      :pin    melpa-stable
       :init   (setq projectile-completion-system 'ivy)
       :config (projectile-mode t))
   #+END_SRC
@@ -115,27 +130,34 @@
 * Syntax checking
   #+BEGIN_SRC emacs-lisp
     (use-package flycheck
+      :pin  melpa-stable
       :hook (after-init . global-flycheck-mode))
   #+END_SRC
 
 * Spell checking
   #+BEGIN_SRC emacs-lisp
     (use-package flyspell
+      :pin  melpa-stable
       :hook ((after-init . flyspell-mode)
              (prog-mode . flyspell-prog-mode)))
   #+END_SRC
 
 * Git
   #+BEGIN_SRC emacs-lisp
-    (use-package magit)
+    (use-package magit
+      :pin melpa-stable)
 
-    (use-package gitconfig-mode)
+    (use-package gitconfig-mode
+      :pin melpa-stable)
 
-    (use-package gitattributes-mode)
+    (use-package gitattributes-mode
+      :pin melpa-stable)
 
-    (use-package gitignore-mode)
+    (use-package gitignore-mode
+      :pin melpa-stable)
 
     (use-package evil-magit
+      :pin   melpa-stable
       :after evil)
   #+END_SRC
 
@@ -148,10 +170,12 @@
 * smartparens
   #+BEGIN_SRC emacs-lisp
     (use-package smartparens
+      :pin     melpa-stable
       :config (show-smartparens-global-mode t)
       :hook   (prog-mode . turn-on-smartparens-strict-mode))
 
     (use-package evil-smartparens
+      :pin     melpa-stable
       :after smartparens
       :hook  (smartparens-mode . evil-smartparens-mode))
 
@@ -171,6 +195,7 @@
 ** Clojure
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
+       :pin melpa-stable
        :init
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook (lambda ()
@@ -195,11 +220,13 @@
                                         (request-context 0)))))
 
      (use-package clj-refactor
+       :pin  melpa-stable
        :init (setq cljr-warn-on-eval nil)
        :hook ((clojure-mode cider-mode) . clj-refactor-mode))
 
 
      (use-package cider
+       :pin melpa-stable
        :init
        (setq cider-prompt-for-symbol nil
              cider-save-file-on-load t
@@ -297,6 +324,7 @@
 ** Scala
    #+BEGIN_SRC emacs-lisp
      (use-package ensime
+       :pin melpa-stable
        :init
        (setq ensime-search-interface 'ivy
              ensime-startup-notification nil)
@@ -307,14 +335,15 @@
 ** Dart
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
-       :init
-       (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
-             dart-enable-analysis-server t))
+       :pin  melpa-stable
+       :init (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
+                   dart-enable-analysis-server t))
    #+END_SRC
 
 ** YAML
    #+BEGIN_SRC emacs-lisp
      (use-package yaml-mode
+       :pin  melpa-stable
        :mode (("\\.yml\\'" . yaml-mode)
               ("\\.yaml\\'" . yaml-mode)))
    #+END_SRC
@@ -328,6 +357,7 @@
 ** Markdown
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
+       :pin  melpa-stable
        :mode (("README\\.md\\'" . gfm-mode)
               ("CHANGELOG\\.md\\'" . gfm-mode)
               ("ROADMAP\\.md\\'" . gfm-mode)
@@ -338,7 +368,21 @@
 ** Ruby
    #+BEGIN_SRC emacs-lisp
      (use-package enh-ruby-mode
-       :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
+       :pin  melpa-stable
+       :mode (("\\.rb\\'" . enh-ruby-mode)
+              ("\\.ru\\'" . enh-ruby-mode)
+              ("\\.rake\\'" . enh-ruby-mode)
+              ("\\.thor\\'" . enh-ruby-mode)
+              ("\\.jbuilder\\'" . enh-ruby-mode)
+              ("\\.gemspec\\'" . enh-ruby-mode)
+              ("\\.podspec\\'" . enh-ruby-mode)
+              ("Gemfile\\'" . enh-ruby-mode)
+              ("Rakefile\\'" . enh-ruby-mode)
+              ("Capfile\\'" . enh-ruby-mode)
+              ("Thorfile\\'" . enh-ruby-mode)
+              ("Vagrantfile\\'" . enh-ruby-mode)
+              ("Guardfile\\'" . enh-ruby-mode)
+              ("Podfile\\'" . enh-ruby-mode)))
    #+END_SRC
 
 * Misc
