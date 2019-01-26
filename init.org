@@ -33,7 +33,7 @@
   #+BEGIN_SRC emacs-lisp
     (use-package evil
       :pin    melpa-stable
-      :init   (setq evil-want-integration t
+      :init   (setq evil-want-integration nil
                     evil-want-keybinding  nil)
       :config (evil-mode 1))
 
