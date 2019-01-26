@@ -200,6 +200,12 @@
      (add-hook 'prog-mode-hook #'eldoc-mode)
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     (use-package eval-sexp-fu
+       :pin  melpa-stable
+       :hook (prog-mode . eval-sexp-fu-flash-mode))
+   #+END_SRC
+
 ** Clojure
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
@@ -246,6 +252,12 @@
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'subword-mode)
        (add-hook 'cider-repl-mode-hook #'visual-line-mode))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package cider-eval-sexp-fu
+       :pin   melpa-stable
+       :after (cider eval-sexp-fu))
    #+END_SRC
 
    Custom key bindings, mostly for clojure but mnemonics prefixes should be usable for all languages, for example:
