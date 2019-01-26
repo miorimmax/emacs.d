@@ -101,7 +101,7 @@
 * Status line
   #+BEGIN_SRC emacs-lisp
     (use-package telephone-line
-      :pin    melpa-stable
+      :pin    melpa
       :config (telephone-line-mode t))
   #+END_SRC
 
