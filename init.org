@@ -25,8 +25,21 @@
   #+BEGIN_SRC emacs-lisp
     (use-package exec-path-from-shell
       :pin    melpa-stable
-      :config (when (memq window-system '(mac ns))
-                (exec-path-from-shell-initialize)))
+      :init   (setq exec-path-from-shell-variables '("PATH"
+                                                     "MANPATH"
+                                                     "HOME"
+                                                     "TMPDIR"
+                                                     "SSH_AUTH_SOCK"
+                                                     "GPG_TTY"
+                                                     "JAVA_HOME"
+                                                     "GRAALVM_HOME"
+                                                     "LEIN_SUPPRESS_USER_LEVEL_REPO_WARNINGS"
+                                                     "LEIN_USE_BOOTCLASSPATH"
+                                                     "LEIN_FAST_TRAMPOLINE"
+                                                     "FLUTTER_ROOT"
+                                                     "GOPATH"
+                                                     "GOROOT"))
+      :config (exec-path-from-shell-initialize))
   #+END_SRC
 
 * EVIL
