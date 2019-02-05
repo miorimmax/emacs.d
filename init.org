@@ -150,6 +150,15 @@
       :hook (after-init . global-flycheck-mode))
   #+END_SRC
 
+  Show errors in popups at point:
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck-pos-tip
+      :pin   melpa-stable
+      :after flycheck
+      :hook  (flycheck-mode . flycheck-pos-tip-mode))
+  #+END_SRC
+
 * Spell checking
   #+BEGIN_SRC emacs-lisp
     (use-package flyspell
