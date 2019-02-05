@@ -145,6 +145,12 @@
       :config (projectile-mode t))
   #+END_SRC
 
+  #+BEGIN_SRC emacs-lisp
+    (evil-leader/set-key
+      "po" 'projectile-switch-project
+      "ps" 'projectile-switch-open-project)
+  #+END_SRC
+
 * Syntax checking
   #+BEGIN_SRC emacs-lisp
     (use-package flycheck
