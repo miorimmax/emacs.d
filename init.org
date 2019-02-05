@@ -139,7 +139,8 @@
   #+BEGIN_SRC emacs-lisp
     (use-package projectile
       :pin    melpa-stable
-      :init   (setq projectile-completion-system 'ivy)
+      :init   (setq projectile-completion-system 'ivy
+                    projectile-project-search-path '("~/dev"))
       :config (projectile-mode t))
   #+END_SRC
 
