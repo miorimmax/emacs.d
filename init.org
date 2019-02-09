@@ -236,11 +236,20 @@
        :hook (prog-mode . eval-sexp-fu-flash-mode))
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp
+       :pin  melpa-stable
+       :init (setq lsp-auto-guess-root t)
+       :hook (dart-mode . lsp))
+   #+END_SRC
+
 ** Clojure
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
        :pin melpa-stable
        :init
+       (add-to-list 'projectile-project-root-files-bottom-up "project.clj")
+       (add-to-list 'projectile-project-root-files-bottom-up "deps.edn")
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook (lambda ()
                                       (define-clojure-indent
@@ -405,6 +414,7 @@
      (use-package ensime
        :pin melpa-stable
        :init
+       (add-to-list 'projectile-project-root-files-bottom-up "build.sbt")
        (setq ensime-search-interface 'ivy
              ensime-startup-notification nil)
        (add-hook 'scala-mode-hook 'ensime-mode)
@@ -415,8 +425,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
        :pin  melpa-stable
-       :init (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"
-                   dart-enable-analysis-server t))
+       :init
+       (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+       (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
+       (setq dart-sdk-path "/usr/local/flutter/bin/cache/dart-sdk/"))
    #+END_SRC
 
 ** YAML
@@ -461,7 +473,8 @@
               ("Thorfile\\'" . enh-ruby-mode)
               ("Vagrantfile\\'" . enh-ruby-mode)
               ("Guardfile\\'" . enh-ruby-mode)
-              ("Podfile\\'" . enh-ruby-mode)))
+              ("Podfile\\'" . enh-ruby-mode))
+       :init (add-to-list 'projectile-project-root-files-bottom-up "Gemfile"))
    #+END_SRC
 
 * Misc
