@@ -133,7 +133,7 @@
     (use-package company-lsp
       :pin    melpa-stable
       :after  '(company lsp)
-      :config (add-to-list 'company-backends 'company-lsp)))
+      :config (add-to-list 'company-backends 'company-lsp))
   #+END_SRC
 
 * Rainbow parens
@@ -244,7 +244,7 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (use-package lsp
+     (use-package lsp-mode
        :pin  melpa-stable
        :init (setq lsp-auto-guess-root t)
        :hook (dart-mode . lsp))
