@@ -129,6 +129,13 @@
                                  '((company-dabbrev-code company-yasnippet)))))))
   #+END_SRC
 
+  #+BEGIN_SRC emacs-lisp
+    (use-package company-lsp
+      :pin    melpa-stable
+      :after  '(company lsp)
+      :config (add-to-list 'company-backends 'company-lsp)))
+  #+END_SRC
+
 * Rainbow parens
   #+BEGIN_SRC emacs-lisp
     (use-package rainbow-delimiters
