@@ -431,7 +431,7 @@
 ** Dart
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
-       :pin  melpa-stable
+       :pin  melpa
        :init
        (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
        (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
