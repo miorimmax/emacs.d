@@ -455,7 +455,8 @@
 ** JSON
    #+BEGIN_SRC emacs-lisp
      (use-package json-mode
-       :mode (("\\.json\\.base\\'" . json-mode)))
+       :mode (("\\.json\\.base\\'" . json-mode))
+       :init (setq js-indent-level 2))
    #+END_SRC
 
 ** Markdown
