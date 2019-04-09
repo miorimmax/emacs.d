@@ -326,11 +326,14 @@
              cider-save-file-on-load t
              cider-font-lock-dynamically '(macro core function var)
              cider-eldoc-display-context-dependent-info t
+             cider-eldoc-display-for-symbol-at-point #'truncate-sym-name-if-fit
              cider-repl-pop-to-buffer-on-connect nil
-             cider-overlays-use-font-lock t)
+             cider-overlays-use-font-lock t
+             cider-jdk-src-paths '("~/dev/java"))
        (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'subword-mode)
+       (add-hook 'cider-repl-mode-hook #'eldoc-mode)
        (add-hook 'cider-repl-mode-hook #'visual-line-mode))
    #+END_SRC
 
