@@ -238,7 +238,7 @@
 
 ** All
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'prog-mode-hook #'eldoc-mode)
+     (add-hook 'prog-mode-hook #'global-eldoc-mode)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -318,7 +318,6 @@
        :pin  melpa-stable
        :init (setq cljr-warn-on-eval nil)
        :hook ((clojure-mode cider-mode) . clj-refactor-mode))
-
 
      (use-package cider
        :pin melpa-stable
