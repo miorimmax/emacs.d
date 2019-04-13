@@ -140,6 +140,13 @@
       :config (add-to-list 'company-backends 'company-lsp))
   #+END_SRC
 
+  #+BEGIN_SRC emacs-lisp
+    (use-package company-quickhelp
+      :pin   melpa-stable
+      :after '(company)
+      :hook  ((prog-mode . company-quickhelp-mode)))
+  #+END_SRC
+
 * Rainbow parens
   #+BEGIN_SRC emacs-lisp
     (use-package rainbow-delimiters
