@@ -263,80 +263,117 @@
 
 ** Clojure
    #+BEGIN_SRC emacs-lisp
-     (use-package clojure-mode
-       :pin melpa-stable
-       :init
-       (add-to-list 'projectile-project-root-files-bottom-up "project.clj")
-       (add-to-list 'projectile-project-root-files-bottom-up "deps.edn")
-       (add-hook 'clojure-mode-hook #'subword-mode)
-       (add-hook 'clojure-mode-hook (lambda ()
-                                      (define-clojure-indent
-                                        (against-backgroud 0)
-                                        (against-background 0)
-                                        (as-admin 1)
-                                        (as-customer 1)
-                                        (as-customer-with-lift 1)
-                                        (as-delegate 2)
-                                        (as-delegate-with-lift 2)
-                                        (as-of 1)
-                                        (assoc 1)
-                                        (assoc-if 1)
-                                        (assoc-in-if 1)
-                                        (constraint-fn 2)
-                                        (consume! 0)
-                                        (data-fn 1)
-                                        (defhandler 2)
-                                        (defint 0)
-                                        (defuf 1)
-                                        (embeds 0)
-                                        (expand-routes 0)
-                                        (fact 1)
-                                        (facts 1)
-                                        (flow 1)
-                                        (flow-as-of 1)
-                                        (flow-without-validation 1)
-                                        (for-all 1)
-                                        (future-fact 1)
-                                        (future-facts 1)
-                                        (idempotent-start 1)
-                                        (idempotent-stop 1)
-                                        (ignore-conflict 0)
-                                        (let-entities 2)
-                                        (let-flow 1)
-                                        (log-messages 0)
-                                        (logged-call 1)
-                                        (non-test-action 0)
-                                        (profile 2)
-                                        (profiled 1)
-                                        (provided 0)
-                                        (quick-check 1)
-                                        (rethrow 1)
-                                        (run-recipe 0)
-                                        (some-with-open 1)
-                                        (system-map 0)
-                                        (tabular 0)
-                                        (try-type 0)
-                                        (with-cid 1)
-                                        (with-fn-validation 0)
-                                        (with-responses 0)
-                                        (with-scopes 1)))))
+     (defun set-clojure-indent-style ()
+       (define-clojure-indent
+         (against-backgroud 0)
+         (against-background 0)
+         (as-admin 1)
+         (as-customer 1)
+         (as-customer-with-lift 1)
+         (as-delegate 2)
+         (as-delegate-with-lift 2)
+         (as-of 1)
+         (assoc 1)
+         (assoc-if 1)
+         (assoc-in-if 1)
+         (constraint-fn 2)
+         (consume! 0)
+         (data-fn 1)
+         (defhandler 2)
+         (defint 0)
+         (defuf 1)
+         (embeds 0)
+         (expand-routes 0)
+         (fact 1)
+         (facts 1)
+         (flow 1)
+         (flow-as-of 1)
+         (flow-without-validation 1)
+         (for-all 1)
+         (future-fact 1)
+         (future-facts 1)
+         (idempotent-start 1)
+         (idempotent-stop 1)
+         (ignore-conflict 0)
+         (let-entities 2)
+         (let-flow 1)
+         (log-messages 0)
+         (logged-call 1)
+         (non-test-action 0)
+         (profile 2)
+         (profiled 1)
+         (provided 0)
+         (quick-check 1)
+         (rethrow 1)
+         (run-recipe 0)
+         (some-with-open 1)
+         (system-map 0)
+         (tabular 0)
+         (try-type 0)
+         (with-cid 1)
+         (with-fn-validation 0)
+         (with-responses 0)
+         (with-scopes 1)))
 
+      (use-package clojure-mode
+        :pin melpa-stable
+        :init
+        (add-to-list 'projectile-project-root-files-bottom-up "project.clj")
+        (add-to-list 'projectile-project-root-files-bottom-up "deps.edn")
+        (add-to-list 'projectile-project-root-files-bottom-up "build.boot")
+        (add-hook 'clojure-mode-hook #'subword-mode)
+        (add-hook 'clojure-mode-hook #'set-clojure-indent-style))
+   #+END_SRC
+
+   clj-refactor configuration:
+
+   * Never warn when evaluating project code is necessary for building the ASTs (~cljr-warn-on-eval~)
+
+   #+BEGIN_SRC emacs-lisp
      (use-package clj-refactor
        :pin  melpa-stable
        :init (setq cljr-warn-on-eval nil)
        :hook ((clojure-mode cider-mode) . clj-refactor-mode))
+   #+END_SRC
 
+   CIDER configuration:
+
+   * Try to use symbol at point for commands instead of asking for it (~cider-prompt-for-symbol~)
+   * Always save files when loading their buffer (~cider-save-file-on-load~)
+   * Use dynamic syntax highlighting in macros, clojure.core, functions, deprecated vars and non-local vars (~cider-font-lock-dynamically~)
+   * Use context dependent info in eldoc (~cider-eldoc-display-context-dependent-info~)
+   * Display eldoc for symbol at point (~cider-eldoc-display-for-symbol-at-point~)
+   * Do not open REPL buffer when establishing connection to server (~cider-repl-pop-to-buffer-on-connect~)
+   * Use Clojure's syntax highlighting in REPL buffer (~cider-repl-use-clojure-font-lock~)
+   * Use Clojure's syntax highlighting in overlay buffers (~cider-overlays-use-font-lock~)
+   * Set JDK source paths for stacktrace navigation (~cider-jdk-src-paths~)
+   * Use zprint to pretty print (~cider-print-fn~)
+   * Wrap stacktrace messages (~cider-stacktrace-fill-column~)
+   * Only show project frames in the stacktrace (~cider-stacktrace-default-filters~)
+
+   CIDER hooks:
+
+   * Enable fuzzy completion in cider-mode and cider-repl-mode (~cider-company-enable-fuzzy-completion~)
+   * Enable CamelCase movements and editing in cider-repl-mode (~subword-mode~)
+   * Enable eldoc-mode in cider-repl-mode
+   * Enable visual-line-mode in cider-repl-mode
+
+   #+BEGIN_SRC emacs-lisp
      (use-package cider
        :pin melpa-stable
        :init
        (setq cider-prompt-for-symbol nil
              cider-save-file-on-load t
-             cider-font-lock-dynamically '(macro core function var)
+             cider-font-lock-dynamically t
              cider-eldoc-display-context-dependent-info t
              cider-eldoc-display-for-symbol-at-point #'truncate-sym-name-if-fit
              cider-repl-pop-to-buffer-on-connect nil
+             cider-repl-use-clojure-font-lock t
              cider-overlays-use-font-lock t
-             cider-jdk-src-paths '("~/dev/java"))
+             cider-jdk-src-paths '("~/dev/src/java-8" "~/dev/src/clojure-1.9" "~/dev/src/clojure-1.10")
+             cider-print-fn #'zprint
+             cider-stacktrace-fill-column t
+             cider-stacktrace-default-filters '(project))
        (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
        (add-hook 'cider-repl-mode-hook #'subword-mode)
