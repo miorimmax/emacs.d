@@ -391,6 +391,7 @@
 
    | Prefix | Meaning  |
    |--------+----------|
+   | SPC d  | Debug    |
    | SPC e  | Evaluate |
    | SPC l  | Load     |
    | SPC p  | Project  |
@@ -433,6 +434,10 @@
        " rup" 'cljr-update-project-dependencies)
 
      (evil-define-key '(normal visual) cider-mode-map
+       " di"  'cider-inspect
+       " dn"  'cider-toggle-trace-ns
+       " dt"  'cider-debug-defun-at-point
+       " dv"  'cider-toggle-trace-var
        " el"  'cider-eval-last-sexp
        " en"  'cider-eval-ns-form
        " er"  'cider-eval-region
