@@ -388,11 +388,10 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (use-package emidje
-       :pin    melpa-stable
-       :after  '(cider)
-       :config (emidje-enable-nrepl-middleware)
-       :hook   ((cider-mode . emidje-mode)))
+     ;;(use-package emidje
+     ;;  :pin    melpa
+     ;;  :after  cider-stable
+     ;;  :config (emidje-setup))
    #+END_SRC
 
    Custom key bindings, mostly for clojure but mnemonics prefixes should be usable for all languages, for example:
