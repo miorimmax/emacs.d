@@ -384,7 +384,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package cider-eval-sexp-fu
        :pin   melpa-stable
-       :after (cider eval-sexp-fu))
+       :after '(cider eval-sexp-fu))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
