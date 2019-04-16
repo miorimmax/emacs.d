@@ -118,9 +118,9 @@
 
 * Status line
   #+BEGIN_SRC emacs-lisp
-    (use-package telephone-line
-      :pin    melpa
-      :config (telephone-line-mode t))
+    (use-package powerline
+      :pin melpa
+      :config (powerline-default-theme))
   #+END_SRC
 
 * Code completion
